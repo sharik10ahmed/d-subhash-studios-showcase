@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { useStudio } from "@/store/StudioStore";
-import { galleryImages } from "@/data/mockData";
+import { img } from "@/data/images";
 
 export const Route = createFileRoute("/admin/")({
   head: () => ({
@@ -25,7 +25,7 @@ function AdminDashboard() {
     { label: "Testimonials", value: testimonials.length, to: "/admin/testimonials" as const },
     { label: "Films", value: films.length, to: "/admin/films" as const },
     { label: "FAQs", value: faqs.length, to: "/admin/faq" as const },
-    { label: "Gallery Images", value: galleryImages.length, to: "/admin/portfolio" as const },
+    { label: "Gallery Images", value: Object.keys(img).length, to: "/admin/portfolio" as const },
   ];
 
   return (
