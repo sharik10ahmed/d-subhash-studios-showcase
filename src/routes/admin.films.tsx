@@ -15,7 +15,7 @@ export const Route = createFileRoute("/admin/films")({
       { property: "og:description", content: "Add, edit and remove cinematic films." },
     ],
   }),
-  component: AdminFilms;
+  component: AdminFilms,
 });
 
 function AdminFilms() {
