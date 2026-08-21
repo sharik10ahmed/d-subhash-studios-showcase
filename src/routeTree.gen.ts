@@ -14,6 +14,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FilmsRouteImport } from './routes/films'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminFaqRouteImport } from './routes/admin.faq'
 import { Route as AdminFilmsRouteImport } from './routes/admin.films'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminPortfolioRouteImport } from './routes/admin.portfolio'
@@ -43,6 +44,11 @@ const PortfolioRoute = PortfolioRouteImport.update({
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFaqRoute = AdminFaqRouteImport.update({
+  id: '/admin/faq',
+  path: '/admin/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminFilmsRoute = AdminFilmsRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/films': typeof FilmsRoute
   '/portfolio': typeof PortfolioRoute
+  '/admin/faq': typeof AdminFaqRoute
   '/admin/films': typeof AdminFilmsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/portfolio': typeof AdminPortfolioRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/films': typeof FilmsRoute
   '/portfolio': typeof PortfolioRoute
+  '/admin/faq': typeof AdminFaqRoute
   '/admin/films': typeof AdminFilmsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/portfolio': typeof AdminPortfolioRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/films': typeof FilmsRoute
   '/portfolio': typeof PortfolioRoute
+  '/admin/faq': typeof AdminFaqRoute
   '/admin/films': typeof AdminFilmsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/portfolio': typeof AdminPortfolioRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/films'
     | '/portfolio'
+    | '/admin/faq'
     | '/admin/films'
     | '/admin/login'
     | '/admin/portfolio'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/films'
     | '/portfolio'
+    | '/admin/faq'
     | '/admin/films'
     | '/admin/login'
     | '/admin/portfolio'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/films'
     | '/portfolio'
+    | '/admin/faq'
     | '/admin/films'
     | '/admin/login'
     | '/admin/portfolio'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FilmsRoute: typeof FilmsRoute
   PortfolioRoute: typeof PortfolioRoute
+  AdminFaqRoute: typeof AdminFaqRoute
   AdminFilmsRoute: typeof AdminFilmsRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminPortfolioRoute: typeof AdminPortfolioRoute
@@ -197,6 +210,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/faq': {
+      id: '/admin/faq'
+      path: '/admin/faq'
+      fullPath: '/admin/faq'
+      preLoaderRoute: typeof AdminFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/films': {
       id: '/admin/films'
       path: '/admin/films'
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FilmsRoute: FilmsRoute,
   PortfolioRoute: PortfolioRoute,
+  AdminFaqRoute: AdminFaqRoute,
   AdminFilmsRoute: AdminFilmsRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminPortfolioRoute: AdminPortfolioRoute,
