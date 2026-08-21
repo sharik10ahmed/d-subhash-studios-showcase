@@ -1,24 +1,49 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteLayout } from "@/components/SiteLayout";
+import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
+import { Services } from "@/components/Services";
+import { Portfolio } from "@/components/Portfolio";
+import { Films } from "@/components/Films";
+import { FeaturedWork } from "@/components/FeaturedWork";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { Process } from "@/components/Process";
+import { Statistics } from "@/components/Statistics";
+import { Testimonials } from "@/components/Testimonials";
+import { FAQ } from "@/components/FAQ";
+import { Contact } from "@/components/Contact";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "D Subhash Studios | Photography & Cinematography in Gadhinglaj";
+const description =
+  "D Subhash Studios offers premium wedding photography, candid photography, cinematography, event coverage, pre-wedding shoots, and advertisement filmmaking in Gadhinglaj, Maharashtra.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <SiteLayout>
+      <Hero />
+      <About />
+      <Services />
+      <Portfolio />
+      <Films />
+      <FeaturedWork />
+      <WhyChooseUs />
+      <Process />
+      <Statistics />
+      <Testimonials />
+      <FAQ />
+      <Contact />
+    </SiteLayout>
   );
 }
